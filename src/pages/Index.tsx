@@ -1,12 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Toaster } from 'sonner';
+import ParticleBackground from '@/components/portfolio/ParticleBackground';
+import Navigation from '@/components/portfolio/Navigation';
+import HeroSection from '@/components/portfolio/HeroSection';
+import AboutSection from '@/components/portfolio/AboutSection';
+import SkillsSection from '@/components/portfolio/SkillsSection';
+import ExperienceSection from '@/components/portfolio/ExperienceSection';
+import ProjectsSection from '@/components/portfolio/ProjectsSection';
+import ContactSection from '@/components/portfolio/ContactSection';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
+      {/* Animated Particle Background */}
+      <ParticleBackground />
+      
+      {/* Navigation */}
+      <Navigation />
+      
+      {/* Main Content */}
+      <main className="relative z-10">
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
+      
+      {/* Toast notifications */}
+      <Toaster position="bottom-right" theme="dark" />
     </div>
   );
 };
