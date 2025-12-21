@@ -7,31 +7,31 @@ const skillCategories = [
   {
     title: 'Languages',
     icon: Code2,
-    skills: ['HTML/CSS', 'JavaScript', 'Python', 'C/C++'],
+    skills: ['Java', 'HTML/CSS', 'JavaScript', 'Python', 'C/C++', 'SQL'],
     color: 'from-primary/20 to-primary/5',
   },
   {
     title: 'Frameworks',
     icon: Layout,
-    skills: ['Tailwind', 'Bootstrap', 'React', 'Node.js', 'Express', 'WordPress'],
+    skills: ['JavaFX', 'Hibernate (JPA)', 'Tailwind', 'Bootstrap', 'React', 'Node.js', 'Express', 'WordPress'],
     color: 'from-primary/20 to-primary/5',
   },
   {
     title: 'Databases',
     icon: Database,
-    skills: ['MongoDB', 'Oracle', 'PL/SQL', 'PostgreSQL'],
+    skills: ['MongoDB', 'Oracle', 'PL/SQL', 'PostgreSQL', 'H2 Database', 'MySQL'],
     color: 'from-primary/20 to-primary/5',
   },
   {
     title: 'Tools',
     icon: Wrench,
-    skills: ['Git', 'Jira', 'Azure DevOps', 'PowerShell', 'VS Code', 'Visual Studio', 'Postman', 'Cypress'],
+    skills: ['Git', 'Jira', 'Azure DevOps', 'PowerShell', 'VS Code', 'Visual Studio', 'Postman', 'Cypress', 'Google Guice'],
     color: 'from-primary/20 to-primary/5',
   },
   {
     title: 'Other',
     icon: Lightbulb,
-    skills: ['SDLC', 'OOP', 'Data Structures & Algorithms', 'Web Services', 'REST APIs'],
+    skills: ['SDLC', 'OOP', 'MVC Architecture', 'Data Structures & Algorithms', 'Web Services', 'REST APIs', 'Dependency Injection'],
     color: 'from-primary/20 to-primary/5',
   },
 ];

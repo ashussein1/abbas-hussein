@@ -27,10 +27,10 @@ const HeroSection = () => {
             className="space-y-4"
           >
             <h2 className="font-orbitron text-xl sm:text-2xl md:text-3xl text-foreground/90 tracking-wider">
-              Junior Programmer Analyst
+              Software Engineer
             </h2>
             <p className="font-mono text-lg text-muted-foreground">
-              Full-Stack Developer
+              AI Enthusiast | Machine Learning Explorer
             </p>
           </motion.div>
 
