@@ -1,5 +1,5 @@
 import { Toaster } from 'sonner';
-import ParticleBackground from '@/components/portfolio/ParticleBackground';
+import ImmersiveBackground from '@/components/portfolio/ImmersiveBackground';
 import Navigation from '@/components/portfolio/Navigation';
 import HeroSection from '@/components/portfolio/HeroSection';
 import AboutSection from '@/components/portfolio/AboutSection';
@@ -11,8 +11,8 @@ import ContactSection from '@/components/portfolio/ContactSection';
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
-      {/* Animated Particle Background */}
-      <ParticleBackground />
+      {/* Immersive Flowing Background */}
+      <ImmersiveBackground />
       
       {/* Navigation */}
       <Navigation />
