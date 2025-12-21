@@ -91,7 +91,7 @@ const ImmersiveBackground = () => {
         let mouseForceX = 0;
         let mouseForceY = 0;
 
-        if (dist < maxDist) {
+        if (dist < maxDist && dist > 0.1) {
           const force = (1 - dist / maxDist) * 50;
           mouseForceX = -(dx / dist) * force;
           mouseForceY = -(dy / dist) * force;
