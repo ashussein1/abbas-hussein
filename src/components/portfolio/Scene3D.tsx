@@ -206,11 +206,11 @@ const CentralDisplay = ({ name }: { name: string }) => {
 
 // Animated grid floor
 const GridFloor = () => {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const shaderRef = useRef<THREE.ShaderMaterial>(null);
   
   useFrame((state) => {
-    if (meshRef.current) {
-      (meshRef.current.material as THREE.ShaderMaterial).uniforms.uTime.value = state.clock.elapsedTime;
+    if (shaderRef.current && shaderRef.current.uniforms) {
+      shaderRef.current.uniforms.uTime.value = state.clock.elapsedTime;
     }
   });
 
@@ -218,7 +218,7 @@ const GridFloor = () => {
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -3, 0]}>
       <planeGeometry args={[100, 100, 100, 100]} />
       <shaderMaterial
-        ref={meshRef as any}
+        ref={shaderRef}
         transparent
         uniforms={{
           uTime: { value: 0 },
