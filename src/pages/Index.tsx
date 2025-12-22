@@ -1,31 +1,34 @@
+import { useState } from 'react';
 import { Toaster } from 'sonner';
-import ImmersiveBackground from '@/components/portfolio/ImmersiveBackground';
-import Navigation from '@/components/portfolio/Navigation';
-import HeroSection from '@/components/portfolio/HeroSection';
-import AboutSection from '@/components/portfolio/AboutSection';
-import SkillsSection from '@/components/portfolio/SkillsSection';
-import ExperienceSection from '@/components/portfolio/ExperienceSection';
-import ProjectsSection from '@/components/portfolio/ProjectsSection';
-import ContactSection from '@/components/portfolio/ContactSection';
+import Scene3D from '@/components/portfolio/Scene3D';
+import SectionPanel from '@/components/portfolio/SectionPanel';
+
+type SectionType = 'home' | 'about' | 'skills' | 'experience' | 'projects' | 'contact';
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState<SectionType | null>(null);
+
+  const handleSectionSelect = (section: SectionType) => {
+    setActiveSection(section);
+  };
+
+  const handleClosePanel = () => {
+    setActiveSection(null);
+  };
+
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
-      {/* Immersive Flowing Background */}
-      <ImmersiveBackground />
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* 3D Scene */}
+      <Scene3D 
+        onSectionSelect={handleSectionSelect} 
+        activeSection={activeSection} 
+      />
       
-      {/* Navigation */}
-      <Navigation />
-      
-      {/* Main Content */}
-      <main className="relative z-10">
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <ContactSection />
-      </main>
+      {/* Section Panel Overlay */}
+      <SectionPanel 
+        activeSection={activeSection} 
+        onClose={handleClosePanel} 
+      />
       
       {/* Toast notifications */}
       <Toaster position="bottom-right" theme="dark" />
