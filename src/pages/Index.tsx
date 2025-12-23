@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Toaster } from 'sonner';
-import Scene3D from '@/components/portfolio/Scene3D';
+import GameMenu from '@/components/portfolio/GameMenu';
 import SectionPanel from '@/components/portfolio/SectionPanel';
 
-type SectionType = 'home' | 'about' | 'skills' | 'experience' | 'projects' | 'contact';
+type SectionType = 'about' | 'skills' | 'experience' | 'projects' | 'contact';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<SectionType | null>(null);
@@ -17,10 +17,10 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* 3D Scene */}
-      <Scene3D 
-        onSectionSelect={handleSectionSelect} 
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Game Menu */}
+      <GameMenu 
+        onSelect={handleSectionSelect} 
         activeSection={activeSection} 
       />
       
@@ -31,7 +31,17 @@ const Index = () => {
       />
       
       {/* Toast notifications */}
-      <Toaster position="bottom-right" theme="dark" />
+      <Toaster 
+        position="bottom-right" 
+        theme="dark"
+        toastOptions={{
+          style: {
+            background: 'hsl(var(--card))',
+            border: '1px solid hsl(var(--border))',
+            color: 'hsl(var(--foreground))',
+          },
+        }}
+      />
     </div>
   );
 };
