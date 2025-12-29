@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { User, Zap, Briefcase, Rocket, Mail, ChevronRight, Terminal, Cpu, Database, Globe } from 'lucide-react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { User, Zap, Briefcase, Rocket, Mail, ChevronRight, Globe } from 'lucide-react';
+import ModernBackground from './ModernBackground';
 
 type SectionType = 'about' | 'skills' | 'experience' | 'projects' | 'contact';
 
@@ -9,139 +10,41 @@ interface GameMenuProps {
   activeSection: SectionType | null;
 }
 
-const menuItems: { id: SectionType; label: string; icon: any; color: string; description: string }[] = [
-  { id: 'about', label: 'PROFILE', icon: User, color: '#00d4ff', description: 'Learn about me' },
-  { id: 'skills', label: 'ARSENAL', icon: Zap, color: '#ff00aa', description: 'Tech stack & abilities' },
-  { id: 'experience', label: 'MISSIONS', icon: Briefcase, color: '#ffaa00', description: 'Work history' },
-  { id: 'projects', label: 'PROJECTS', icon: Rocket, color: '#00ff88', description: 'Featured builds' },
-  { id: 'contact', label: 'CONNECT', icon: Mail, color: '#aa66ff', description: 'Get in touch' },
+const menuItems: { id: SectionType; label: string; icon: any; description: string }[] = [
+  { id: 'about', label: 'About', icon: User, description: 'Learn about me' },
+  { id: 'skills', label: 'Skills', icon: Zap, description: 'Tech stack & abilities' },
+  { id: 'experience', label: 'Experience', icon: Briefcase, description: 'Work history' },
+  { id: 'projects', label: 'Projects', icon: Rocket, description: 'Featured builds' },
+  { id: 'contact', label: 'Contact', icon: Mail, description: 'Get in touch' },
 ];
 
 const GameMenu = ({ onSelect, activeSection }: GameMenuProps) => {
   const [hoveredItem, setHoveredItem] = useState<SectionType | null>(null);
-  const [time, setTime] = useState(new Date());
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden">
-      {/* Animated Background */}
-      <div className="fixed inset-0 overflow-hidden">
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20" />
-        
-        {/* Cyber grid */}
-        <div className="absolute inset-0 cyber-grid opacity-30" />
-        
-        {/* Floating orbs */}
-        <motion.div
-          className="absolute w-[600px] h-[600px] rounded-full opacity-20"
-          style={{
-            background: 'radial-gradient(circle, hsl(var(--neon-cyan)) 0%, transparent 70%)',
-            left: mousePos.x - 300,
-            top: mousePos.y - 300,
-          }}
-          animate={{
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
-        
-        {/* Animated lines */}
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-px bg-gradient-to-r from-transparent via-primary to-transparent"
-            style={{
-              width: '100%',
-              top: `${20 + i * 20}%`,
-              opacity: 0.3,
-            }}
-            animate={{
-              x: ['-100%', '100%'],
-            }}
-            transition={{
-              duration: 8 + i * 2,
-              repeat: Infinity,
-              ease: 'linear',
-              delay: i * 0.5,
-            }}
-          />
-        ))}
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Modern Background */}
+      <ModernBackground />
 
-        {/* Floating particles */}
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 rounded-full"
-            style={{
-              background: i % 3 === 0 ? 'hsl(var(--neon-cyan))' : i % 3 === 1 ? 'hsl(var(--neon-pink))' : 'hsl(var(--neon-purple))',
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -50, 0],
-              opacity: [0.3, 1, 0.3],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* HUD Elements */}
-      <div className="fixed top-0 left-0 right-0 z-40 p-4 flex justify-between items-start pointer-events-none">
-        {/* Top left corner */}
+      {/* Minimal Header */}
+      <div className="fixed top-0 left-0 right-0 z-40 p-6 flex justify-between items-center pointer-events-none">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5 }}
-          className="flex flex-col gap-2"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="text-white/60 font-mono text-sm tracking-wider"
         >
-          <div className="flex items-center gap-2 text-primary font-mono text-xs">
-            <Terminal size={14} />
-            <span>SYSTEM STATUS: ONLINE</span>
-          </div>
-          <div className="flex items-center gap-4 text-muted-foreground font-mono text-xs">
-            <span className="flex items-center gap-1">
-              <Cpu size={12} /> CPU: 99.9%
-            </span>
-            <span className="flex items-center gap-1">
-              <Database size={12} /> MEM: OPTIMAL
-            </span>
-          </div>
+          PORTFOLIO © 2025
         </motion.div>
 
-        {/* Top right corner */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5 }}
-          className="text-right"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="flex items-center gap-2 text-white/60 font-mono text-sm"
         >
-          <div className="font-orbitron text-2xl text-primary tabular-nums">
-            {time.toLocaleTimeString('en-US', { hour12: false })}
-          </div>
-          <div className="text-muted-foreground font-mono text-xs flex items-center gap-2 justify-end">
-            <Globe size={12} />
-            <span>TORONTO, ON</span>
-          </div>
+          <Globe size={14} />
+          <span>TORONTO, ON</span>
         </motion.div>
       </div>
 
@@ -149,172 +52,98 @@ const GameMenu = ({ onSelect, activeSection }: GameMenuProps) => {
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-20">
         {/* Hero Section */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="text-center mb-20"
         >
-          {/* Glitch Title */}
-          <div className="relative inline-block mb-6">
-            <motion.h1
-              className="font-orbitron text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter"
+          {/* Name */}
+          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tight leading-none mb-4">
+            <span 
+              className="bg-clip-text text-transparent"
               style={{
-                background: 'linear-gradient(135deg, hsl(var(--neon-cyan)), hsl(var(--neon-pink)), hsl(var(--neon-purple)))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                backgroundImage: 'linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 50%, #a78bfa 100%)',
               }}
-              animate={{
-                textShadow: [
-                  '0 0 20px hsl(var(--neon-cyan))',
-                  '0 0 40px hsl(var(--neon-pink))',
-                  '0 0 20px hsl(var(--neon-purple))',
-                  '0 0 20px hsl(var(--neon-cyan))',
-                ],
-              }}
-              transition={{ duration: 4, repeat: Infinity }}
             >
-              ABBAS
-            </motion.h1>
-            <motion.h1
-              className="font-orbitron text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-foreground"
-              animate={{
-                textShadow: [
-                  '0 0 10px rgba(255,255,255,0.5)',
-                  '0 0 30px rgba(255,255,255,0.3)',
-                  '0 0 10px rgba(255,255,255,0.5)',
-                ],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              HUSSEIN
-            </motion.h1>
-          </div>
+              Abbas
+            </span>
+            <br />
+            <span className="text-white">Hussein</span>
+          </h1>
 
-          {/* Subtitle with typing effect */}
-          <motion.div
+          {/* Subtitle */}
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="flex items-center justify-center gap-4 text-muted-foreground font-rajdhani text-xl md:text-2xl tracking-widest"
+            transition={{ delay: 0.4 }}
+            className="text-white/50 text-lg md:text-xl tracking-wide mt-6"
           >
-            <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary" />
-            <span>SOFTWARE ENGINEER</span>
-            <span className="text-primary">•</span>
-            <span>AI ENTHUSIAST</span>
-            <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary" />
-          </motion.div>
+            Software Engineer · AI Enthusiast
+          </motion.p>
 
-          {/* Animated subtitle line */}
-          <motion.div
-            className="mt-8 text-sm font-mono text-muted-foreground"
+          {/* CTA hint */}
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
+            transition={{ delay: 0.8 }}
+            className="text-white/30 text-sm mt-12 tracking-widest uppercase"
           >
-            <span className="text-primary">&gt;</span> SELECT A MODULE TO EXPLORE
-          </motion.div>
+            Explore my work
+          </motion.p>
         </motion.div>
 
         {/* Menu Grid */}
-        <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {menuItems.map((item, index) => (
             <motion.button
               key={item.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + index * 0.1 }}
+              transition={{ delay: 0.3 + index * 0.1 }}
               onClick={() => onSelect(item.id)}
               onMouseEnter={() => setHoveredItem(item.id)}
               onMouseLeave={() => setHoveredItem(null)}
-              className={`
-                group relative overflow-hidden rounded-xl p-6 text-left transition-all duration-300
-                ${activeSection === item.id 
-                  ? 'ring-2 ring-offset-2 ring-offset-background' 
-                  : ''
-                }
-              `}
+              className="group relative rounded-2xl p-6 text-left transition-all duration-500 backdrop-blur-sm border border-white/10 hover:border-white/20"
               style={{
                 background: hoveredItem === item.id 
-                  ? `linear-gradient(135deg, ${item.color}15 0%, transparent 100%)`
-                  : 'hsl(var(--card) / 0.5)',
-                borderColor: hoveredItem === item.id ? item.color : 'hsl(var(--border))',
-                boxShadow: hoveredItem === item.id 
-                  ? `0 0 30px ${item.color}30, inset 0 0 30px ${item.color}10`
-                  : 'none',
-                ['--tw-ring-color' as any]: item.color,
+                  ? 'rgba(255, 255, 255, 0.08)'
+                  : 'rgba(255, 255, 255, 0.03)',
               }}
-              whileHover={{ scale: 1.02, y: -5 }}
+              whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* Animated border */}
+              {/* Glow effect on hover */}
               <div 
-                className="absolute inset-0 rounded-xl opacity-50 transition-opacity duration-300"
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
                 style={{
-                  border: `1px solid ${hoveredItem === item.id ? item.color : 'hsl(var(--border))'}`,
+                  background: 'radial-gradient(circle at 50% 50%, rgba(167, 139, 250, 0.15), transparent 70%)',
+                  filter: 'blur(20px)',
                 }}
               />
 
-              {/* Scan line effect on hover */}
-              <AnimatePresence>
-                {hoveredItem === item.id && (
-                  <motion.div
-                    initial={{ top: '-100%' }}
-                    animate={{ top: '100%' }}
-                    exit={{ top: '100%' }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute left-0 right-0 h-20 pointer-events-none"
-                    style={{
-                      background: `linear-gradient(180deg, transparent, ${item.color}20, transparent)`,
-                    }}
-                  />
-                )}
-              </AnimatePresence>
-
               {/* Icon */}
-              <div className="relative z-10 flex items-start justify-between mb-4">
-                <div
-                  className="p-3 rounded-lg transition-all duration-300"
-                  style={{
-                    background: `${item.color}20`,
-                    boxShadow: hoveredItem === item.id ? `0 0 20px ${item.color}40` : 'none',
-                  }}
-                >
+              <div className="flex items-center gap-4 mb-3">
+                <div className="p-2.5 rounded-xl bg-white/5 group-hover:bg-white/10 transition-colors duration-300">
                   <item.icon 
-                    size={28} 
-                    style={{ color: item.color }}
-                    className="transition-transform duration-300 group-hover:scale-110"
+                    size={22} 
+                    className="text-white/60 group-hover:text-white transition-colors duration-300"
                   />
                 </div>
                 <ChevronRight 
-                  size={20} 
-                  className="text-muted-foreground transition-all duration-300 group-hover:translate-x-1"
-                  style={{ color: hoveredItem === item.id ? item.color : undefined }}
+                  size={18} 
+                  className="text-white/30 group-hover:text-white/60 group-hover:translate-x-1 transition-all duration-300 ml-auto"
                 />
               </div>
 
               {/* Label */}
-              <h3 
-                className="relative z-10 font-orbitron text-xl font-bold mb-2 transition-colors duration-300"
-                style={{ color: hoveredItem === item.id ? item.color : 'hsl(var(--foreground))' }}
-              >
+              <h3 className="text-lg font-semibold text-white/90 group-hover:text-white transition-colors duration-300 mb-1">
                 {item.label}
               </h3>
 
               {/* Description */}
-              <p className="relative z-10 text-sm text-muted-foreground font-rajdhani">
+              <p className="text-sm text-white/40 group-hover:text-white/60 transition-colors duration-300">
                 {item.description}
               </p>
-
-              {/* Corner decorations */}
-              <div 
-                className="absolute top-2 left-2 w-3 h-3 border-t border-l transition-colors duration-300"
-                style={{ borderColor: hoveredItem === item.id ? item.color : 'transparent' }}
-              />
-              <div 
-                className="absolute bottom-2 right-2 w-3 h-3 border-b border-r transition-colors duration-300"
-                style={{ borderColor: hoveredItem === item.id ? item.color : 'transparent' }}
-              />
             </motion.button>
           ))}
         </div>
@@ -323,10 +152,10 @@ const GameMenu = ({ onSelect, activeSection }: GameMenuProps) => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="mt-16 text-center text-muted-foreground text-sm font-mono"
+          transition={{ delay: 1.2 }}
+          className="mt-20 text-center text-white/30 text-sm"
         >
-          <p>© 2025 ABBAS HUSSEIN • CRAFTED WITH PASSION</p>
+          <p>© 2025 Abbas Hussein</p>
         </motion.div>
       </div>
     </div>
