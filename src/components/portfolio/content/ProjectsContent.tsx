@@ -11,7 +11,6 @@ const projects = [
       'Implemented self-service Kiosk and Admin Dashboard with dynamic pricing, BCrypt security, and automated revenue reporting',
     ],
     category: 'Desktop App',
-    color: '#00ff88',
     featured: true,
   },
   {
@@ -23,7 +22,6 @@ const projects = [
       'Implemented PostgreSQL database for efficient data management',
     ],
     category: 'Web App',
-    color: '#00d4ff',
     featured: false,
   },
   {
@@ -34,64 +32,45 @@ const projects = [
       'Designed and optimized user interface for seamless conversion experiences',
     ],
     category: 'Tool',
-    color: '#ffaa00',
     featured: false,
   },
 ];
 
 const ProjectsContent = () => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {projects.map((project, index) => (
         <motion.div
           key={project.title}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.15 }}
-          className={`relative p-6 rounded-xl group overflow-hidden ${
-            project.featured ? 'ring-1' : ''
-          }`}
-          style={{
-            background: project.featured ? `${project.color}08` : 'hsl(var(--card))',
-            border: '1px solid',
-            borderColor: project.featured ? `${project.color}40` : 'hsl(var(--border))',
-            ['--tw-ring-color' as any]: project.featured ? project.color : 'transparent',
-          }}
+          transition={{ delay: index * 0.1 }}
+          className={`relative p-5 rounded-2xl group overflow-hidden ${
+            project.featured 
+              ? 'bg-primary/5 border-primary/30' 
+              : 'bg-muted/50 hover:bg-muted/70'
+          } border border-border/50 transition-colors`}
         >
-          {/* Hover glow */}
-          <motion.div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-            style={{
-              background: `radial-gradient(circle at 50% 50%, ${project.color}15, transparent 70%)`,
-            }}
-          />
-
           {/* Header */}
-          <div className="relative z-10 flex items-start justify-between mb-4">
+          <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
               <motion.div 
-                className="p-3 rounded-xl transition-all duration-300 group-hover:scale-110"
-                style={{ background: `${project.color}20` }}
+                className="p-2.5 rounded-xl bg-primary/10 transition-transform duration-300 group-hover:scale-105"
               >
-                <FolderGit2 size={24} style={{ color: project.color }} />
+                <FolderGit2 size={22} className="text-primary" />
               </motion.div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-orbitron text-lg font-bold text-foreground">
+                  <h3 className="font-semibold text-foreground">
                     {project.title}
                   </h3>
                   {project.featured && (
-                    <span className="flex items-center gap-1 px-2 py-0.5 text-xs rounded-full font-rajdhani"
-                      style={{ background: `${project.color}20`, color: project.color }}
-                    >
-                      <Star size={12} /> Featured
+                    <span className="flex items-center gap-1 px-2 py-0.5 text-xs rounded-full bg-primary/10 text-primary">
+                      <Star size={10} /> Featured
                     </span>
                   )}
                 </div>
-                <span 
-                  className="text-xs font-mono"
-                  style={{ color: project.color }}
-                >
+                <span className="text-xs text-muted-foreground">
                   {project.category}
                 </span>
               </div>
@@ -99,53 +78,42 @@ const ProjectsContent = () => {
             
             <div className="flex gap-2">
               <motion.button
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2 rounded-lg transition-colors"
-                style={{ 
-                  background: 'hsl(var(--muted))',
-                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 rounded-lg bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Github size={18} className="text-muted-foreground hover:text-foreground transition-colors" />
+                <Github size={16} />
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2 rounded-lg transition-colors"
-                style={{ 
-                  background: 'hsl(var(--muted))',
-                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 rounded-lg bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
               >
-                <ExternalLink size={18} className="text-muted-foreground hover:text-foreground transition-colors" />
+                <ExternalLink size={16} />
               </motion.button>
             </div>
           </div>
 
           {/* Description */}
-          <ul className="relative z-10 space-y-2 mb-5">
+          <ul className="space-y-2 mb-4">
             {project.description.map((item, i) => (
               <li 
                 key={i}
-                className="flex items-start gap-3 text-muted-foreground text-sm font-rajdhani"
+                className="flex items-start gap-3 text-muted-foreground text-sm"
               >
-                <ArrowRight size={14} style={{ color: project.color }} className="shrink-0 mt-1" />
+                <ArrowRight size={14} className="text-primary shrink-0 mt-0.5" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
 
           {/* Tech Stack */}
-          <div className="relative z-10 flex flex-wrap gap-2 pt-4 border-t" style={{ borderColor: 'hsl(var(--border))' }}>
+          <div className="flex flex-wrap gap-2 pt-4 border-t border-border/50">
             {project.tech.map((tech) => (
               <motion.span
                 key={tech}
-                whileHover={{ scale: 1.05 }}
-                className="px-2.5 py-1 text-xs font-mono rounded-lg"
-                style={{
-                  background: `${project.color}15`,
-                  color: project.color,
-                  border: `1px solid ${project.color}30`,
-                }}
+                whileHover={{ scale: 1.03 }}
+                className="px-2.5 py-1 text-xs rounded-lg bg-background/80 border border-border/50 text-foreground/70"
               >
                 {tech}
               </motion.span>
@@ -161,19 +129,15 @@ const ProjectsContent = () => {
         rel="noopener noreferrer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        whileHover={{ scale: 1.02, y: -2 }}
-        className="flex items-center justify-center gap-3 p-4 rounded-xl transition-all group"
-        style={{
-          background: 'hsl(var(--card))',
-          border: '1px solid hsl(var(--border))',
-        }}
+        transition={{ delay: 0.4 }}
+        whileHover={{ scale: 1.01 }}
+        className="flex items-center justify-center gap-3 p-4 rounded-2xl bg-muted/50 border border-border/50 hover:bg-muted/70 transition-colors group"
       >
-        <Github size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
-        <span className="text-muted-foreground group-hover:text-foreground transition-colors font-rajdhani">
+        <Github size={18} className="text-muted-foreground group-hover:text-primary transition-colors" />
+        <span className="text-muted-foreground group-hover:text-foreground transition-colors">
           View more projects on GitHub
         </span>
-        <ArrowRight size={16} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+        <ArrowRight size={14} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
       </motion.a>
     </div>
   );
