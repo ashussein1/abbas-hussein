@@ -27,16 +27,7 @@ const GameMenu = ({ onSelect, activeSection }: GameMenuProps) => {
       <ModernBackground />
 
       {/* Minimal Header */}
-      <div className="fixed top-0 left-0 right-0 z-40 p-6 flex justify-between items-center pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="text-white/60 font-mono text-sm tracking-wider"
-        >
-          PORTFOLIO © 2025
-        </motion.div>
-
+      <div className="fixed top-0 left-0 right-0 z-40 p-6 flex justify-end items-center pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
