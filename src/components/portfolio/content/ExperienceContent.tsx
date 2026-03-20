@@ -4,6 +4,19 @@ import { useState } from 'react';
 
 const experiences = [
   {
+    title: 'Software Engineering Intern',
+    company: 'Umoja Outreach Foundation',
+    location: 'New York, NY',
+    period: 'Oct 2025 – Dec 2025',
+    type: 'Internship',
+    bullets: [
+      'Delivered a conflict resolution management system with automated email notifications, reducing admin response time by 60%',
+      'Resolved 8+ critical production bugs across React, TypeScript, and Firebase',
+      'Built an AI-powered chatbot using OpenAI GPT-4 to improve user support efficiency',
+      'Executed database migrations impacting 1,000+ records with 100% data integrity',
+    ],
+  },
+  {
     title: 'Junior Programmer Analyst',
     company: 'Government of Ontario',
     location: 'Toronto, ON',
