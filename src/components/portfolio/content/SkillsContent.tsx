@@ -25,7 +25,7 @@ const skillCategories = [
   {
     title: 'Concepts',
     icon: Lightbulb,
-    skills: ['SDLC', 'OOP', 'MVC Architecture', 'REST APIs', 'Data Structures', 'Algorithms', 'Dependency Injection', 'Agile'],
+    skills: ['SDLC', 'OOP', 'MVC Architecture', 'REST APIs', 'Microservices', 'Data Structures', 'Algorithms', 'Dependency Injection', 'Agile'],
   },
 ];
 
