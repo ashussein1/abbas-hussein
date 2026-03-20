@@ -4,6 +4,17 @@ import { FolderGit2, ExternalLink, Github, Layers, ArrowRight } from 'lucide-rea
 
 const projects = [
   {
+    title: "Cloud-Native Document Microservice",
+    tech: ['Node.js', 'AWS (ECS, S3, DynamoDB, Cognito)', 'Docker', 'CI/CD', 'Jest', 'Hurl'],
+    description: [
+      'Built a cloud-native REST API using Node.js to process and convert multimedia data, automating deployments to AWS ECS via GitHub Actions',
+      'Engineered a secure storage system by integrating Amazon Cognito for authentication, AWS DynamoDB for metadata, and AWS S3 for file storage',
+      'Dockerized the complete microservice and implemented automated testing pipelines (Jest, Hurl), achieving over 90% code coverage for production readiness',
+    ],
+    category: 'Cloud / DevOps',
+    color: 'from-blue-500/20 to-cyan-500/20',
+  },
+  {
     title: "Ab's Hotel Reservation System",
     tech: ['Java', 'JavaFX', 'Hibernate (JPA)', 'H2 Database', 'Google Guice', 'MVC', 'SQL'],
     description: [
@@ -20,9 +31,7 @@ const projects = [
     description: [
       'Designed web application for showcasing and exploring Lego collections',
       'Developed responsive front-end using EJS templating and Tailwind CSS',
-      'Integrated Express.js for routing and server-side logic',
       'Implemented PostgreSQL database for efficient data management',
-      'Built RESTful routes for adding, editing, and deleting LEGO sets',
     ],
     category: 'Web App',
     color: 'from-orange-500/20 to-yellow-500/20',
@@ -33,7 +42,6 @@ const projects = [
     description: [
       'Created currency converter utilizing external API for real-time exchange rates',
       'Designed and optimized user interface for seamless conversion experiences',
-      'Demonstrated proficiency in API integration and web development',
     ],
     category: 'Tool',
     color: 'from-yellow-500/20 to-green-500/20',
