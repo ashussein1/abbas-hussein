@@ -10,7 +10,7 @@ const skillCategories = [
   {
     title: 'Frameworks',
     icon: Layout,
-    skills: ['JavaFX', 'Hibernate (JPA)', 'React', 'Node.js', 'Express', 'Tailwind CSS', 'Bootstrap', 'WordPress'],
+    skills: ['JavaFX', 'Hibernate (JPA)', 'React', 'Node.js', 'Express', 'Tailwind CSS', 'Bootstrap', 'EJS', 'WordPress'],
   },
   {
     title: 'Databases',
