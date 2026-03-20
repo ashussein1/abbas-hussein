@@ -15,7 +15,7 @@ const skillCategories = [
   {
     title: 'Databases',
     icon: Database,
-    skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'Oracle', 'H2 Database', 'PL/SQL'],
+    skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'DynamoDB', 'Oracle', 'H2 Database', 'PL/SQL'],
   },
   {
     title: 'Tools',
