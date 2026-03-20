@@ -20,7 +20,7 @@ const skillCategories = [
   {
     title: 'Tools',
     icon: Wrench,
-    skills: ['Git', 'Jira', 'Azure DevOps', 'VS Code', 'Postman', 'Cypress', 'Google Guice', 'PowerShell'],
+    skills: ['Git', 'Docker', 'AWS (ECS, S3, Cognito)', 'CI/CD', 'Jira', 'Azure DevOps', 'Postman', 'Cypress', 'Jest', 'Google Guice', 'PowerShell'],
   },
   {
     title: 'Concepts',
