@@ -3,6 +3,17 @@ import { FolderGit2, ExternalLink, Github, ArrowRight, Star } from 'lucide-react
 
 const projects = [
   {
+    title: "Cloud-Native Document Microservice",
+    tech: ['Node.js', 'AWS (ECS, S3, DynamoDB, Cognito)', 'Docker', 'CI/CD', 'Jest', 'Hurl'],
+    description: [
+      'Built a cloud-native REST API using Node.js to process and convert multimedia data, automating deployments to AWS ECS via GitHub Actions',
+      'Engineered a secure storage system by integrating Amazon Cognito for authentication, AWS DynamoDB for metadata, and AWS S3 for file storage',
+      'Dockerized the complete microservice and implemented automated testing pipelines (Jest, Hurl), achieving over 90% code coverage for production readiness',
+    ],
+    category: 'Cloud / DevOps',
+    featured: true,
+  },
+  {
     title: "Ab's Hotel Reservation System",
     tech: ['Java', 'JavaFX', 'Hibernate (JPA)', 'H2 Database', 'Google Guice', 'MVC', 'SQL'],
     description: [

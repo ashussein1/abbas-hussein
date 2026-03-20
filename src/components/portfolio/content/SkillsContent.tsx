@@ -10,22 +10,22 @@ const skillCategories = [
   {
     title: 'Frameworks',
     icon: Layout,
-    skills: ['JavaFX', 'Hibernate (JPA)', 'React', 'Node.js', 'Express', 'Tailwind CSS', 'Bootstrap', 'WordPress'],
+    skills: ['JavaFX', 'Hibernate (JPA)', 'React', 'Node.js', 'Express', 'Tailwind CSS', 'Bootstrap', 'EJS', 'WordPress'],
   },
   {
     title: 'Databases',
     icon: Database,
-    skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'Oracle', 'H2 Database', 'PL/SQL'],
+    skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'DynamoDB', 'Oracle', 'H2 Database', 'PL/SQL'],
   },
   {
     title: 'Tools',
     icon: Wrench,
-    skills: ['Git', 'Jira', 'Azure DevOps', 'VS Code', 'Postman', 'Cypress', 'Google Guice', 'PowerShell'],
+    skills: ['Git', 'Docker', 'AWS (ECS, S3, Cognito)', 'CI/CD', 'Jira', 'Azure DevOps', 'Postman', 'Cypress', 'Jest', 'Google Guice', 'PowerShell'],
   },
   {
     title: 'Concepts',
     icon: Lightbulb,
-    skills: ['SDLC', 'OOP', 'MVC Architecture', 'REST APIs', 'Data Structures', 'Algorithms', 'Dependency Injection', 'Agile'],
+    skills: ['SDLC', 'OOP', 'MVC Architecture', 'REST APIs', 'Microservices', 'Data Structures', 'Algorithms', 'Dependency Injection', 'Agile'],
   },
 ];
 
